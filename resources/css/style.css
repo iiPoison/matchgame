@@ -21,6 +21,10 @@ body {
 
 }
 
+strong {
+  color: rgb(32, 64, 86);
+}
+
 .target-item {
   background-color: rgb(32, 64, 86);
   height: 200px;
