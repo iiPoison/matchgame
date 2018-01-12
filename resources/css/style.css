@@ -34,10 +34,11 @@ strong {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.target-item p {
-  color: white;
+  color: rgb(32, 64, 86);
   font-size: 100px;
   font-family: 'Work Sans', sans-serif;
+}
+
+.target-item:hover {
+  border: 2px solid midnightblue;
 }
