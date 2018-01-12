@@ -32,9 +32,6 @@ $(document).ready(function() {
     jQuery(arrayWithNameElements[i]).html (arrayWithValue[i]);
   }
 
-  
-
-
 
 //var str = 'Привет';
 //jQuery('#console').html(str);
