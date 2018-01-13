@@ -80,7 +80,14 @@ function changeToGreyColor() {
   }
 
   $('.target-item').click(function() {
-    if (count == 0) {
+
+      var backColor = $(this).css('background-color');
+      if (backColor == 'rgb(105, 105, 105)') {
+        resetValue();
+        return;
+      }
+
+      if (count == 0) {
       idElem1 = $(this).attr('id');
       valueElem1 = $(this).html();
       colorItem1 = getColor($(this).html());
@@ -88,7 +95,7 @@ function changeToGreyColor() {
       $(this).css('color','white');
       count++;
     } else if (count == 1) {
-      idElem2 = $(this).attr('id');
+      idElem2 = $(this).attr('id');    
       valueElem2 = $(this).html();
       colorItem2 = getColor($(this).html());
       $(this).css('background-color', colorItem2);
@@ -110,17 +117,19 @@ function changeToGreyColor() {
 
         }
       }
-  }).delay(500); //end $('.target-item').click(function()
+  }); //end $('.target-item').click(function()
 
   $('#resetAll').click(function() {
     resetValue();
     $('.target-item').css('background-color','rgb(32, 64, 86)');
     $('.target-item').css('color','rgb(32, 64, 86)');
     arrayWithValue = ['1','1','2','2','3','3','4','4','5','5','6','6','7','7','8','8'];
+    ar = 0;
+    checkedArray.splice(0, checkedArray.length);
     arrayWithValue = shuffle(arrayWithValue);
     for ( i=0; i<16; i++) {
       $(arrayWithNameElements[i]).html(arrayWithValue[i]);
-    }    
+    }
   });
 
 
