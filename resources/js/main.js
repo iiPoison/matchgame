@@ -57,6 +57,20 @@ function resetValue() {
   count = 0;
 }
 
+function resetDefoultColor() {
+  $('#' + idElem1).css('background-color','rgb(32, 64, 86)');
+  $('#' + idElem1).css('color','rgb(32, 64, 86)');
+  $('#' + idElem2).css('background-color','rgb(32, 64, 86)');
+  $('#' + idElem2).css('color','rgb(32, 64, 86)');
+}
+
+function changeToGreyColor() {
+  $('#' + idElem1).css('background-color','#696969');
+  $('#' + idElem1).css('color','#D3D3D3');
+  $('#' + idElem2).css('background-color','#696969');
+  $('#' + idElem2).css('color','#D3D3D3');
+}
+
   //shuffle array
   arrayWithValue = shuffle(arrayWithValue);
 
@@ -79,15 +93,24 @@ function resetValue() {
       colorItem2 = getColor($(this).html());
       $(this).css('background-color', colorItem2);
       $(this).css('color','white');
-      if (valueElem1 == valueElem2) {
-        $('#console').html(' равны ');
-        resetValue();
-      } else {
-        $('#console').html(' НЕ равны ');
-        resetValue();
+
+        if (valueElem1 == valueElem2) {
+          $('#console').html(' равны ');//удалить
+          window.setTimeout(function() {
+            changeToGreyColor();
+            resetValue();
+          }, 350);
+
+        } else {
+          $('#console').html(' НЕ равны ');//удалить
+          window.setTimeout(function() {
+            resetDefoultColor(); //сбрасывает на цвета по умолчанию
+            resetValue(); //обнуляет буферные значения
+          }, 350);
+
+        }
       }
-    }
-  }); //end $('.target-item').click(function()
+  }).delay(500); //end $('.target-item').click(function()
 
   $('#resetAll').click(function() {
     resetValue();
@@ -97,11 +120,8 @@ function resetValue() {
     arrayWithValue = shuffle(arrayWithValue);
     for ( i=0; i<16; i++) {
       $(arrayWithNameElements[i]).html(arrayWithValue[i]);
-    }
-    $('#console').html('0');//удалить
-    $('#console1').html('1');//удалить
+    }    
   });
 
 
-
-});
+});// end $(document).ready(function()
